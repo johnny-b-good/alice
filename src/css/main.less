@@ -1,0 +1,407 @@
+@import "crossbrowser.less";
+
+@imageHeight: 635px;
+@imageWidth: 960px;
+
+@imagesRoot: "../img";
+
+
+html {
+    background: #ddd;
+    font: 12px sans-serif;
+}
+
+.magazine {
+    margin-bottom: 100px;
+    margin-top:10px;
+
+    .group:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+
+    .group{
+        display: block;
+        zoom:1;
+    }
+
+    .mag_wrap {
+        position: relative;
+        height: @imageHeight;
+        width: @imageWidth;
+        margin: 0 auto;
+    }
+
+    .mag_screen {
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        .box-shadow(0 0 7px #aaa);
+        z-index:1;
+
+        &.mag_scrollable {
+            overflow: auto;
+            .box-shadow(inset 0 0 7px #aaa, 0 0 7px #aaa);
+            background: #ccc;
+        }
+    }
+
+
+    .mag_prev, .mag_next {
+        display:block;
+        position: absolute;
+        .linear-gradient(#eee, #fff, #eee);
+        top: 50%;
+        margin-top: -32px;
+        height: 42px;
+        width: 46px;
+        cursor: pointer;
+        border: 1px solid #d8d8d8;
+        border-radius: 3px;
+
+        &:disabled {
+            cursor:default;
+
+            .mag_icon {
+                opacity: 0.5;
+            }
+        }
+
+        .mag_icon {
+            position: absolute;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            top: 50%;
+            left: 50%;
+            margin-left: -16px;
+            margin-top: -15px;
+            background: url('@{imagesRoot}/icons.png') 0 0 no-repeat transparent;
+        }
+    }
+
+    .mag_prev {
+        left: -46px;
+        border-right: none;
+
+        .mag_icon{
+            background-position: 0 -32px;
+        }
+    }
+
+    .mag_next {
+        right: -46px;
+        border-left: none;
+
+        .mag_icon{
+            background-position: 0 -64px;
+        }
+    }
+
+    .mag_page {
+        position: absolute;
+        top: 0;
+        transition: all 1s ease;
+        height: 100%;
+        width: 100%;
+        background: #ccc;
+
+        &.mag_page_prev {
+            left: -100%;
+        }
+
+        &.mag_page_curr {
+            left: 0;
+        }
+
+        &.mag_page_next {
+            left: 100%;
+        }
+
+        .mag_image {
+            display: block;
+            max-height: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .preloader {
+            width: 100%;
+            height: 100%;
+            background: url('@{imagesRoot}/preloader.gif') 50% 50% no-repeat #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+
+    .mag_panel_controls {
+        width: 100%;
+        height: 40px;
+        background: #fff;
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        .box-shadow(0 0 7px #aaa);
+    }
+
+    .mag_panel_page {
+        width: 100px;
+        height: 40px;
+        top:0;
+        left: 50%;
+        margin-left:-50px;
+        position: absolute;
+        text-align: center;
+        line-height: 40px;
+    }
+
+    .mag_icon {
+        display:inline-block;
+        background: url('@{imagesRoot}/icons.png') 0 0 no-repeat transparent;
+    }
+
+    .mag_button {
+        border: 1px solid #ddd;
+        background: white;
+        padding:0; 
+        margin: 0;
+        width: 34px;
+        height: 24px;
+        display:block;
+        text-align: center;
+        .linear-gradient(#eee, #fff, #eee);
+        .border-radius(3px);
+        cursor: pointer;
+        position: absolute;
+        top: 8px;
+
+        .mag_icon {
+            width: 34px;
+            height: 24px;
+            position: absolute;
+            left:0;
+            top:-5px;
+            // left: -3px;
+        }
+
+        &.mag_button_index {
+            left:10px;
+
+            .mag_icon {
+                background-position: 0px -0px;
+            }
+        }
+
+        &.mag_button_thumbs {
+            right: 10px;
+
+            .mag_icon {
+                background-position: 0px -96px;
+            }
+        }
+
+        &.mag_button_enterfs {
+            right: 55px;
+
+            .mag_icon {
+                background-position: 0px -128px;
+            }
+        }
+
+        &.mag_button_prev {
+            left: 0px;
+
+            .mag_icon {
+                background-position: 0px -32px;
+            }
+        }
+
+        &.mag_button_next {
+            right: 0px;
+
+            .mag_icon {
+                background-position: 0px -64px;
+            }
+        }
+    }
+
+    .mag_exitfs {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        right: -130px;
+        background: url('@{imagesRoot}/icons.png') 0 -160px no-repeat transparent;
+        border: 0;
+        padding: 0px 10px 0px 32px;
+        height: 32px;
+        line-height: 32px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .mag_panel_controls {
+        width: 100%;
+        height: 40px;
+        background: #fff;
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+    }
+
+    .mag_panel_page {
+        width: 160px;
+        height: 24px;
+        top: 8px;
+        left: 50%;
+        margin-left: -80px;
+        position: absolute;
+        text-align: center;
+        line-height: 24px;
+
+        .mag_button {
+            top:0;
+
+            &:disabled{
+                cursor:default;
+
+                .mag_icon {
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+
+    .mag_panel_page_label {
+        border: 1px solid #DDDDDD;
+        border-radius: 3px;
+        color: #555555;
+        display: block;
+        height: 22px;
+    }
+
+    .mag_thumb {
+        display: block;
+        float:left;
+        width:295px;
+        height: 195px;
+        margin: 9px;
+        position: relative;
+        overflow: hidden;
+        .transition(box-shadow 0.5s ease);
+        .box-shadow(0 0 7px #aaa);
+
+        &:hover {
+            .box-shadow(0 0 10px #7790B6);
+        }
+
+        .mag_sprite {
+            position: absolute;
+            top:0;
+        }
+
+        .mag_page_num {
+            position: absolute;
+            color: #fff;
+            background: #000;
+            .opacity(75);
+            bottom:0;
+            right:0;
+            line-height: 20px;
+            text-align: center;
+            padding: 0 5px;
+        }
+    }
+
+    .mag_thumb_block {
+        width: 100%;
+        height: auto;
+    }
+
+    .mag_spot {
+        position: absolute;
+        display: block;
+        height:100%;
+        top:0;
+        color:white;
+        background: url('@{imagesRoot}/dot.gif');
+        .transition(box-shadow 0.5s ease);
+
+        &.mag_spot_left {
+            width:50%;
+            left:0;
+        }
+
+        &.mag_spot_right {
+            width:50%;
+            right:0;
+        }
+
+        &.mag_spot_full {
+            width:100%;
+            left:0;
+        }
+
+        &:hover{
+            .box-shadow(inset 0 0 10px #7790B6);
+
+            .mag_spot_button{
+                .opacity(100);
+            }
+        }
+
+        .mag_spot_button{
+            padding-left:20px;
+            padding-right:20px;
+            position: absolute;
+            top:50%;
+            left:50%;
+            margin-left: -42px;
+            margin-top: -12px;
+            border-radius: 13px;
+            box-shadow: 0 0 10px #7790B6;
+            background: #7790B6;
+            line-height:24px;
+            .opacity(0);
+            transition: opacity 0.5s ease;
+        }
+    }    
+
+    .fullscreen {
+        width: 100%;
+        height: 100%;
+        background: #000;
+        margin-bottom: 0;
+
+        .mag_screen {
+            .box-shadow(none);
+        }
+
+        .mag_prev, .mag_next {
+            position: absolute;
+            background: #181818;
+            top: 0;
+            height: 100%;
+            width: 45px;
+            margin-top: 0;
+            cursor: pointer;
+            z-index: 1;
+            border: none;
+        }
+
+        .mag_prev {
+            left: -45px;
+        }
+
+        .mag_next {
+            right: -45px;
+        }
+    }
+}
+

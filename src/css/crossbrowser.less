@@ -1,0 +1,56 @@
+.border-radius(@radius) {
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.box-shadow(...) {
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+  box-shadow: @arguments;
+}
+
+.transition(...) {
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
+
+.transition-properties(...) {
+  @props: ~`"@{arguments}".replace(/[\[\]]/g, '')`;
+  -webkit-transition-property: @props;
+  -moz-transition-property: @props;
+  -o-transition-property: @props;
+  transition-property: @props;
+}
+
+
+.user-select-none() {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.linear-gradient (@base, @start, @stop) {
+    background: @base;
+    background: -moz-linear-gradient(top, @start 0%, @stop 100%);
+    background: -webkit-linear-gradient(top, @start 0%, @stop 100%);
+    background: -o-linear-gradient(top, @start 0%, @stop 100%);
+    background: -ms-linear-gradient(top, @start 0%, @stop 100%);
+    background: linear-gradient(to bottom, @start 0%, @stop 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@{start}', endColorstr='@{stop}',GradientType=0 );
+}
+
+.opacity(@opacity) {
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=@{opacity})";
+  /* IE 5-7 */
+  filter: alpha(opacity=@opacity);
+  -moz-opacity: @opacity/100;
+  -khtml-opacity: @opacity/100;
+  opacity: @opacity/100;
+}

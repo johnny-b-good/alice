@@ -1,0 +1,52 @@
+<div id="magazine" class="magazine {{fullscreenClass}}" al-hotkeys  al-fullscreen>
+    <div class="mag_wrap" style="{{fullscreenDimensions}}">
+        <button class="mag_prev" ng-click="prev()" ng-disabled="current == 0">
+            <i class="mag_icon"></i>
+        </button>
+
+        <div class="mag_screen">
+            <div class="mag_page mag_page_{{pageStatus($index)}}" ng-repeat="page in pages">
+                <div class="preloader" ng-hide="loaded"></div>
+                <img class="mag_image" ng-src="{{page.src}}" alt="" page="{{page.name}}" al-image-loader/>
+                
+                <a 
+                    class="mag_spot mag_spot_{{spot.type}}" 
+                    ng-repeat="spot in page.spots" 
+                    href="{{spot.url}}" 
+                    target="_blank"
+                    title="Просмотреть эту подборку на сайте"
+                >
+                    <span class="button_simple button_blue mag_spot_button">Купить</span>
+                </a>
+            </div>
+        </div>
+
+        <button class="mag_next" ng-click="next()" ng-disabled="(pages.length - current) == 1">
+            <i class="mag_icon"></i>
+        </button>
+
+        <button class="mag_exitfs" ng-click="exitFullscreen()" ng-show="fullscreenSupport && fullscreenStatus">вернуться</button>
+
+        <div class="mag_panel_controls" ng-hide="fullscreenStatus" >
+            <button class="mag_button mag_button_thumbs"  title="Показать превью страниц" ng-click="gotoThumbs()">
+                <i class="mag_icon"></i>
+            </button>
+
+            <div class="mag_panel_page">
+                <button class="mag_button mag_button_prev" title="Предыдущая страница" ng-click="prev()" ng-disabled="current == 0">
+                    <i class="mag_icon"></i>
+                </button>
+                <span class="mag_panel_page_label">
+                    {{currentName}} / 86
+                </span>
+                <button class="mag_button mag_button_next" title="Следующая страница" ng-click="next()" ng-disabled="(pages.length - current) == 1">
+                    <i class="mag_icon"></i>
+                </button>
+            </div>
+
+            <button class="mag_button mag_button_enterfs" ng-click="goFullscreen()" ng-show="fullscreenSupport && !fullscreenStatus" title="Перейти в полноэкранный режим">
+                <i class="mag_icon"></i>
+            </button>
+        </div>
+    </div>
+</div>
