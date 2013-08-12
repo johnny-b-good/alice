@@ -3,14 +3,6 @@
 @imageHeight: 635px;
 @imageWidth: 960px;
 
-@imagesRoot: "../img";
-
-
-html {
-    background: #ddd;
-    font: 12px sans-serif;
-}
-
 .magazine {
     margin-bottom: 100px;
     margin-top:10px;
@@ -324,7 +316,7 @@ html {
         height: auto;
     }
 
-    .mag_spot {
+    .mag_buy {
         position: absolute;
         display: block;
         height:100%;
@@ -333,17 +325,17 @@ html {
         background: url('@{imagesRoot}/dot.gif');
         .transition(box-shadow 0.5s ease);
 
-        &.mag_spot_left {
+        &.mag_buy_left {
             width:50%;
             left:0;
         }
 
-        &.mag_spot_right {
+        &.mag_buy_right {
             width:50%;
             right:0;
         }
 
-        &.mag_spot_full {
+        &.mag_buy_full {
             width:100%;
             left:0;
         }
@@ -351,12 +343,12 @@ html {
         &:hover{
             .box-shadow(inset 0 0 10px #7790B6);
 
-            .mag_spot_button{
+            .mag_buy_button{
                 .opacity(100);
             }
         }
 
-        .mag_spot_button{
+        .mag_buy_button{
             padding-left:20px;
             padding-right:20px;
             position: absolute;
@@ -373,7 +365,13 @@ html {
         }
     }    
 
-    .fullscreen {
+    .mag_spot {
+        display:block;
+        position: absolute;
+        text-decoration: none;
+    }
+
+    &.fullscreen {
         width: 100%;
         height: 100%;
         background: #000;

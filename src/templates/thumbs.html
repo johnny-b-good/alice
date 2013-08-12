@@ -1,16 +1,16 @@
 <div id="magazine" class="magazine" al-fullscreen>
-    <div class="mag_wrap" style="{{!fullscreenDimensions}}">
+    <div class="mag_wrap" style="[[!fullscreenDimensions]]">
 
         <div class="mag_screen mag_scrollable">
             <div class="mag_thumb_block group">
                 <a 
                     ng-repeat="page in pages" 
-                    href="#/?page={{$index}}" 
+                    href="#/?page=[[$index]]" 
                     
                     class="mag_thumb"
                 >
-                    <img class="mag_sprite" ng-src="{{sprite}}" alt="" ng-style="bg($index)" >
-                    <span class="mag_page_num">{{page.name}}</span>
+                    <img class="mag_sprite" ng-src="[[sprite]]" alt="" ng-style="bg($index)" >
+                    <span class="mag_page_num">[[page.name]]</span>
                 </a>
                 
             </div>

@@ -1,0 +1,68 @@
+{% block content %}
+<div ng-app="Alice">
+
+<link rel="stylesheet" type="text/css" href="http://lmcdn.ru/media/magazine/upd/css/alice.css" />
+
+<style>
+    body, .page {
+        background: none repeat scroll 0 0 #EEEEEE;
+    }
+    .top_usp, .breadcrumbs-item-dlm, .breadcrumbs-item-gt, .breadcrumbs-item-lt {
+        display: none;
+    }
+    .breadcrumbs-item-lt + .breadcrumbs-item-txt {
+        display: none;
+    }
+    .breadcrumbs-item {
+        background: none repeat scroll 0 0 #FFFFFF;
+        float: left;
+        font-weight: 400;
+        height: 30px;
+        margin: 0 0 5px;
+        padding: 0;
+        position: relative;
+        width: 960px;
+    }
+    .breadcrumbs-item-txt {
+        background: url("//lmcdn.ru/media/pages/vipusk_250413/arrow_pagging.png") no-repeat scroll right center transparent;
+        color: #BBBBBB;
+        display: block;
+        float: left;
+        line-height: 30px;
+        padding: 0 27px 0 20px;
+    }
+    .breadcrumbs-item-active {
+        background: none repeat scroll 0 0 transparent;
+        color: #BBBBBB;
+        cursor: default;
+        display: block;
+        float: left;
+        font-weight: 700;
+        line-height: 30px;
+        margin-left: 20px;
+    }    
+</style>
+
+
+
+<script src="http://lmcdn.ru/media/magazine/angular.min.js"></script>
+<script src="http://lmcdn.ru/media/magazine/upd/alice.min.js"></script>
+
+<script type="text/ng-template" id="templates/magazine.html">
+    include "templates/magazine.html"
+</script>
+
+<script type="text/ng-template" id="templates/thumbs.html">
+    include "templates/thumbs.html"
+</script>
+
+<script>
+    var MAGAZINE_DATA = 
+        include "data/magazine.json"
+</script>
+
+    <div ng-view></div>
+</div>
+
+
+{% end %}

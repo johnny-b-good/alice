@@ -38,16 +38,16 @@ module.exports = function(grunt) {
               paths: ["src/css"]
           },
           files: {
-            "build/css/style.css": "src/css/main.less"
+            "build/css/alice.css": "src/css/live.less"
           }
         }
       },
 
       includes: {
-        files: {
-          src: ['src/index_build.html'], // Source files
-          dest: 'build/index.html', // Destination directory
-        }
+        tornado: {
+          src: ['src/tornado.html'], // Source files
+          dest: 'build/tornado.html', // Destination directory
+        },
       },
 
       copy: {

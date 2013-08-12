@@ -57,6 +57,7 @@ angular.module('Alice.directives', [])
                         // Подгоняется по высоте
                         var height = screen.height;
                         var width = screen.height / scope.PAGE_HEIGHT * scope.PAGE_WIDTH;
+                        scope.fsRatio =  screen.height/scope.VIEW_HEIGHT;
                         scope.fullscreenDimensions = 'height: ' + height + 'px; width:' + width + 'px;';
                         scope.fullscreenStatus = true;
 
@@ -65,6 +66,7 @@ angular.module('Alice.directives', [])
                     scope.$apply(function(){
                         scope.fullscreenStatus = false;
                         scope.fullscreenDimensions = '';
+                        scope.fsRatio = 1;
                     });
             });
 

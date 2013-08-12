@@ -1,23 +1,31 @@
-<div id="magazine" class="magazine {{fullscreenClass}}" al-hotkeys  al-fullscreen>
-    <div class="mag_wrap" style="{{fullscreenDimensions}}">
+<div id="magazine" class="magazine [[fullscreenClass]]" al-hotkeys  al-fullscreen>
+    <div class="mag_wrap" style="[[fullscreenDimensions]]">
         <button class="mag_prev" ng-click="prev()" ng-disabled="current == 0">
             <i class="mag_icon"></i>
         </button>
 
         <div class="mag_screen">
-            <div class="mag_page mag_page_{{pageStatus($index)}}" ng-repeat="page in pages">
+            <div class="mag_page mag_page_[[pageStatus($index)]]" ng-repeat="page in pages">
                 <div class="preloader" ng-hide="loaded"></div>
-                <img class="mag_image" ng-src="{{page.src}}" alt="" page="{{page.name}}" al-image-loader/>
+                <img class="mag_image" ng-src="[[page.src]]" alt="" page="[[page.name]]" al-image-loader/>
                 
                 <a 
-                    class="mag_spot mag_spot_{{spot.type}}" 
-                    ng-repeat="spot in page.spots" 
-                    href="{{spot.url}}" 
+                    ng-repeat="b in page.buy" 
+                    class="mag_buy mag_buy_[[b.type]]" 
+                    href="[[b.url]]" 
                     target="_blank"
                     title="Просмотреть эту подборку на сайте"
                 >
-                    <span class="button_simple button_blue mag_spot_button">Купить</span>
+                    <span class="button_simple button_blue mag_buy_button">Купить</span>
                 </a>
+                
+                <a 
+                    class="mag_spot" 
+                    ng-repeat="spot in page.spots" 
+                    href="[[spot.url]]" 
+                    target="_blank"
+                    ng-style="spotSize(spot)"
+                ></a>
             </div>
         </div>
 
@@ -37,7 +45,7 @@
                     <i class="mag_icon"></i>
                 </button>
                 <span class="mag_panel_page_label">
-                    {{currentName}} / 86
+                    [[currentName]] / 86
                 </span>
                 <button class="mag_button mag_button_next" title="Следующая страница" ng-click="next()" ng-disabled="(pages.length - current) == 1">
                     <i class="mag_icon"></i>
